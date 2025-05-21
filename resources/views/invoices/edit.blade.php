@@ -54,7 +54,7 @@
             </div>
 
             <div class="mt-4">
-                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">Update Invoice</button>
+                <button type="submit" class="bg-yellow-500 text-black px-4 py-2 rounded">Update Invoice</button>
             </div>
         </form>
     </div>
