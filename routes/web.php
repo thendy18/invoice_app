@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 
 
 Route::get('/', function () {
@@ -33,4 +34,6 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 
 
 Route::resource('products', ProductController::class);
+Route::resource('stocks', StockController::class);
+
 

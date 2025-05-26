@@ -65,12 +65,19 @@
             </tbody>
         </table>
 
-        {{-- Link ke katalog di bawah tabel --}}
-        <div class="mt-6">
+        {{-- Link ke katalog dan stok bahan di bawah tabel --}}
+        <div class="mt-6 flex gap-4">
             <a href="{{ route('products.index') }}" class="text-blue-600 font-semibold hover:underline flex items-center">
                 <span>Katalog</span>
                 <span class="ml-1">→</span>
             </a>
+
+            <a href="{{ route('stocks.index') }}" class="text-blue-600 font-semibold hover:underline flex items-center">
+                <span>Stok Bahan</span>
+                <span class="ml-1">→</span>
+            </a>
         </div>
+
+
     </div>
 @endsection
