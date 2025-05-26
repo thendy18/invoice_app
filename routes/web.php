@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProductController;
+
 
 Route::get('/', function () {
     return redirect('/register');
@@ -27,4 +29,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/invoices/{id}/download', [InvoiceController::class, 'download'])->name('invoices.download');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+
+Route::resource('products', ProductController::class);
 

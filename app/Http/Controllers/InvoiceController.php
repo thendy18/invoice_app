@@ -16,7 +16,8 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::where('user_id', Auth::id())->latest()->get();
+        $invoices = Invoice::latest()->get();
+
 
         return view('invoices.index', compact('invoices'));
     }

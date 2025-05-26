@@ -1,18 +1,24 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl">Daftar Invoice</h2>
-    </x-slot>
+@extends('layouts.app')
 
+@section('content')
     <div class="p-4">
+        {{-- Header --}}
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Daftar Invoice</h2>
+
+        {{-- Notifikasi sukses --}}
         @if(session('success'))
             <div class="bg-green-100 text-green-800 p-2 rounded mb-4">
                 {{ session('success') }}
             </div>
         @endif
 
-        <a href="{{ route('invoices.create') }}" class="bg-blue-500 text-black px-4 py-2 rounded mb-4 inline-block">+ Buat Invoice</a>
+        {{-- Tombol buat invoice --}}
+        <a href="{{ route('invoices.create') }}" class="bg-blue-500 text-black px-4 py-2 rounded mb-4 inline-block hover:bg-blue-600">
+            + Buat Invoice
+        </a>
 
-        <table class="w-full table-auto border">
+        {{-- Tabel daftar invoice --}}
+        <table class="w-full table-auto border mb-6">
             <thead>
                 <tr class="bg-gray-200">
                     <th class="border px-2 py-1">Tanggal</th>
@@ -41,18 +47,15 @@
                         <td class="border px-2 py-1">Rp{{ number_format($invoice->harga_sablon, 0, ',', '.') }}</td>
                         <td class="border px-2 py-1">{{ $invoice->kuantiti }}</td>
                         <td class="border px-2 py-1 font-semibold">Rp{{ number_format($invoice->total_harga, 0, ',', '.') }}</td>
-                        <td class="border px-2 py-1">
-                        <a href="{{ route('invoices.download', $invoice->id) }}" class="text-blue-500 underline text-sm">Download PDF</a><br>
-
-                        <a href="{{ route('invoices.edit', $invoice->id) }}" class="text-yellow-500 underline text-sm">Edit</a>
-
-                        <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus invoice ini?')" class="mt-1">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 underline text-sm">Hapus</button>
-                        </form>
+                        <td class="border px-2 py-1 space-y-1">
+                            <a href="{{ route('invoices.download', $invoice->id) }}" class="text-blue-500 underline text-sm block">Download PDF</a>
+                            <a href="{{ route('invoices.edit', $invoice->id) }}" class="text-yellow-500 underline text-sm block">Edit</a>
+                            <form action="{{ route('invoices.destroy', $invoice->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus invoice ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 underline text-sm">Hapus</button>
+                            </form>
                         </td>
-
                     </tr>
                 @empty
                     <tr>
@@ -61,5 +64,13 @@
                 @endforelse
             </tbody>
         </table>
+
+        {{-- Link ke katalog di bawah tabel --}}
+        <div class="mt-6">
+            <a href="{{ route('products.index') }}" class="text-blue-600 font-semibold hover:underline flex items-center">
+                <span>Katalog</span>
+                <span class="ml-1">→</span>
+            </a>
+        </div>
     </div>
-</x-app-layout>
+@endsection
