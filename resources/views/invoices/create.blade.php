@@ -1,60 +1,81 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl">Buat Invoice Baru</h2>
-    </x-slot>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buat Invoice Baru</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f3f4f6;
+            padding: 2rem;
+        }
 
-    <div class="p-4">
+        input, label, button {
+            display: block;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        input {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 0.7rem;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Buat Invoice Baru</h2>
+
         <form action="{{ route('invoices.store') }}" method="POST">
             @csrf
 
-            <div class="mb-2">
-                <label>Tanggal</label>
-                <input type="date" name="tanggal" class="border rounded w-full" required>
-            </div>
+            <label>Tanggal</label>
+            <input type="date" name="tanggal" required>
 
-            <div class="mb-2">
-                <label>Nama Pembeli</label>
-                <input type="text" name="nama_pembeli" class="border rounded w-full" required>
-            </div>
+            <label>Nama Pembeli</label>
+            <input type="text" name="nama_pembeli" required>
 
-            <div class="mb-2">
-                <label>Bahan Kaos</label>
-                <input type="text" name="bahan_kaos" class="border rounded w-full" required>
-            </div>
+            <label>Bahan</label>
+            <input type="text" name="bahan_kaos" required>
 
-            <div class="mb-2">
-                <label>Warna</label>
-                <input type="text" name="warna" class="border rounded w-full" required>
-            </div>
+            <label>Warna</label>
+            <input type="text" name="warna" required>
 
-            <div class="mb-2">
-                <label>Ukuran Kaos</label>
-                <input type="text" name="ukuran_kaos" class="border rounded w-full" required>
-            </div>
+            <label>Ukuran Kaos</label>
+            <input type="text" name="ukuran_kaos" required>
 
-            <div class="mb-2">
-                <label>Ukuran Sablon</label>
-                <input type="text" name="ukuran_sablon" class="border rounded w-full" required>
-            </div>
+            <label>Ukuran Sablon</label>
+            <input type="text" name="ukuran_sablon" required>
 
-            <div class="mb-2">
-                <label>Harga Kaos</label>
-                <input type="number" step="0.01" name="harga_kaos" class="border rounded w-full" required>
-            </div>
+            <label>Harga Kaos</label>
+            <input type="number" name="harga_kaos" step="100" required>
 
-            <div class="mb-2">
-                <label>Harga Sablon</label>
-                <input type="number" step="0.01" name="harga_sablon" class="border rounded w-full" required>
-            </div>
+            <label>Harga Sablon</label>
+            <input type="number" name="harga_sablon" step="100" required>
 
-            <div class="mb-2">
-                <label>Kuantiti</label>
-                <input type="number" name="kuantiti" class="border rounded w-full" required>
-            </div>
+            <label>Qty</label>
+            <input type="number" name="kuantiti" required>
 
-            <div class="mt-4">
-                <button type="submit" class="bg-blue-500 text-black px-4 py-2 rounded">Simpan Invoice</button>
-            </div>
+            <button type="submit">Simpan Invoice</button>
         </form>
     </div>
-</x-app-layout>
+</body>
+</html>

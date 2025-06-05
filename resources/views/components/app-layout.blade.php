@@ -7,8 +7,9 @@
 </head>
 <body class="bg-gray-100 font-sans antialiased">
     <div class="min-h-screen">
-        @include('layouts.navigation') {{-- kalau kamu pakai navigation --}}
-        
+
+        @include('layouts.navigation') {{-- navigasi kalau kamu pakai Jetstream --}}
+
         @isset($header)
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -18,7 +19,7 @@
         @endisset
 
         <main class="p-4">
-            {{ $slot }}
+            {{ $slot }} {{-- <<<<< INI YANG PENTING HARUS ADA --}}
         </main>
     </div>
 </body>
